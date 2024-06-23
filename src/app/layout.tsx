@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
+import Header from "@/components/header";
 import "./globals.css";
+import LastWatched from "@/components/last-watched";
+import { Toaster } from "sonner";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,7 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} dark`}>{children}</body>
+      <body className={`${roboto.className} dark`}>
+        <Header />
+        <Toaster />
+
+        <div className="pt-16">{children}</div>
+
+        <LastWatched />
+      </body>
     </html>
   );
 }
